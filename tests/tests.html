@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SachetGuard PM – Validation Tests</title>
+<style>
+  :root { color-scheme: light dark; --ok:#0a7d4b; --bad:#b3261e; --line:#c9d3da; }
+  body { font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 24px 16px; max-width: 1100px; margin-inline: auto; }
+  h1 { font-size: clamp(1.3rem, 3vw, 1.8rem); margin: 0 0 4px; }
+  p.sub { margin: 0 0 20px; opacity: .75; }
+  .summary { display: inline-block; padding: 8px 16px; border-radius: 999px; font-weight: 700; margin-bottom: 16px; color: #fff; }
+  .summary.ok { background: var(--ok); } .summary.bad { background: var(--bad); }
+  .wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+  table { border-collapse: collapse; width: 100%; min-width: 640px; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; }
+  td.num { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+  .pass { color: var(--ok); font-weight: 700; } .fail { color: var(--bad); font-weight: 700; }
+  tr:last-child td { border-bottom: 0; }
+</style>
+</head>
+<body>
+<h1>SachetGuard PM – Calculation Engine Validation</h1>
+<p class="sub">Unit tests for js/math.js, js/model.js and js/store.js against hand-calculable values. <span id="stamp"></span></p>
+<div id="summary" class="summary">Running…</div>
+<div class="wrap">
+  <table>
+    <thead><tr><th>#</th><th>Test</th><th>Expected</th><th>Actual</th><th>Result</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+</div>
+
+<script src="../js/math.js"></script>
+<script src="../js/model.js"></script>
+<script src="../js/store.js"></script>
+<script src="tests.js"></script>
+<script>
+  (function () {
+    var results = PM.tests.run();
+    var tbody = document.getElementById('rows');
+    var passed = 0;
+    results.forEach(function (r, i) {
+      if (r.pass) passed++;
+      var tr = document.createElement('tr');
+      [i + 1, r.name, r.expected, r.actual].forEach(function (v, k) {
+        var td = document.createElement('td');
+        if (k >= 2) td.className = 'num';
+        td.textContent = v;
+        tr.appendChild(td);
+      });
+      var res = document.createElement('td');
+      res.className = r.pass ? 'pass' : 'fail';
+      res.textContent = r.pass ? '✔ PASS' : '✘ FAIL';
+      tr.appendChild(res);
+      tbody.appendChild(tr);
+    });
+    var s = document.getElementById('summary');
+    s.textContent = passed + ' / ' + results.length + ' tests passed';
+    s.className = 'summary ' + (passed === results.length ? 'ok' : 'bad');
+    document.getElementById('stamp').textContent = 'Run on ' + new Date().toLocaleString();
+  })();
+</script>
+</body>
+</html>
