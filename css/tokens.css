@@ -1,0 +1,105 @@
+/* SachetGuard PM – design tokens. Water-teal primary, slate neutrals, AA-contrast semantic colours. */
+:root {
+  color-scheme: light;
+
+  /* surfaces and ink */
+  --bg: #eef4f7;
+  --surface: #ffffff;
+  --surface-2: #e6eff3;
+  --surface-3: #d9e7ed;
+  --ink: #0c2230;
+  --ink-2: #455f6f;
+  --ink-3: #6a8392;
+  --line: #d3e0e7;
+  --line-strong: #b4c7d2;
+
+  /* brand */
+  --primary: #0a6b88;
+  --primary-strong: #064f66;
+  --primary-ink: #ffffff;
+  --primary-soft: #dcf0f6;
+  --accent: #15b8c9;
+  --deep: #062a3a;
+
+  /* semantic: text-on-tint pairs (AA) and strong fills for graphics */
+  --ok: #0b6b43;       --ok-bg: #dbf3e6;       --ok-strong: #14a064;
+  --warn: #7d4a00;     --warn-bg: #ffefc9;     --warn-strong: #e29a06;
+  --bad: #a3201a;      --bad-bg: #fde4e1;      --bad-strong: #dc3f35;
+  --info: #0a5c8a;     --info-bg: #dcecf8;
+
+  /* chart palette */
+  --c-weibull: #0a6b88;
+  --c-exp: #e29a06;
+  --c-hazard: #dc3f35;
+  --c-cost: #0a6b88;
+  --c-marker: #7a3fd1;
+  --c-grid: rgba(12, 34, 48, .09);
+  --c-text: #455f6f;
+
+  /* shape and depth */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  --shadow-1: 0 1px 2px rgba(6, 42, 58, .06), 0 1px 1px rgba(6, 42, 58, .04);
+  --shadow-2: 0 2px 4px rgba(6, 42, 58, .05), 0 8px 24px -6px rgba(6, 42, 58, .12);
+  --shadow-3: 0 4px 8px rgba(6, 42, 58, .06), 0 24px 48px -12px rgba(6, 42, 58, .22);
+  --focus: 0 0 0 3px #fff, 0 0 0 5px #0a6b88;
+
+  /* type */
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --fs-xs: clamp(.74rem, .72rem + .1vw, .8rem);
+  --fs-sm: clamp(.84rem, .82rem + .12vw, .92rem);
+  --fs-md: clamp(.95rem, .92rem + .16vw, 1.05rem);
+  --fs-lg: clamp(1.1rem, 1rem + .5vw, 1.35rem);
+  --fs-xl: clamp(1.4rem, 1.1rem + 1.4vw, 2.1rem);
+  --fs-2xl: clamp(1.9rem, 1.2rem + 3vw, 3.4rem);
+  --fs-hero: clamp(2.4rem, 1.2rem + 5.5vw, 5rem);
+
+  --gutter: 16px;
+  --sidebar-w: 268px;
+  --tabbar-h: 64px;
+  --ease: cubic-bezier(.2, .8, .2, 1);
+}
+
+@media (min-width: 640px) { :root { --gutter: 24px; } }
+@media (min-width: 1024px) { :root { --gutter: 40px; } }
+
+/* dark theme: follows the system unless the user chose light */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #07161d; --surface: #0e252f; --surface-2: #143240; --surface-3: #1b4251;
+    --ink: #e6f1f5; --ink-2: #9fbac7; --ink-3: #7b97a5;
+    --line: #21424f; --line-strong: #2f5a6a;
+    --primary: #52c6df; --primary-strong: #8adbed; --primary-ink: #04212a; --primary-soft: #123b49;
+    --ok: #6ee2a8; --ok-bg: #0e3a28; --ok-strong: #2fc983;
+    --warn: #f6c660; --warn-bg: #3c2c08; --warn-strong: #f0b030;
+    --bad: #ff9a91; --bad-bg: #471c19; --bad-strong: #ff6b5f;
+    --info: #7cc4f0; --info-bg: #0f3350;
+    --c-weibull: #52c6df; --c-exp: #f0b030; --c-hazard: #ff6b5f; --c-cost: #52c6df; --c-marker: #b894ff;
+    --c-grid: rgba(230, 241, 245, .1); --c-text: #9fbac7;
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, .4);
+    --shadow-2: 0 2px 4px rgba(0, 0, 0, .3), 0 8px 24px -6px rgba(0, 0, 0, .5);
+    --shadow-3: 0 4px 8px rgba(0, 0, 0, .35), 0 24px 48px -12px rgba(0, 0, 0, .65);
+    --focus: 0 0 0 3px #07161d, 0 0 0 5px #52c6df;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #07161d; --surface: #0e252f; --surface-2: #143240; --surface-3: #1b4251;
+  --ink: #e6f1f5; --ink-2: #9fbac7; --ink-3: #7b97a5;
+  --line: #21424f; --line-strong: #2f5a6a;
+  --primary: #52c6df; --primary-strong: #8adbed; --primary-ink: #04212a; --primary-soft: #123b49;
+  --ok: #6ee2a8; --ok-bg: #0e3a28; --ok-strong: #2fc983;
+  --warn: #f6c660; --warn-bg: #3c2c08; --warn-strong: #f0b030;
+  --bad: #ff9a91; --bad-bg: #471c19; --bad-strong: #ff6b5f;
+  --info: #7cc4f0; --info-bg: #0f3350;
+  --c-weibull: #52c6df; --c-exp: #f0b030; --c-hazard: #ff6b5f; --c-cost: #52c6df; --c-marker: #b894ff;
+  --c-grid: rgba(230, 241, 245, .1); --c-text: #9fbac7;
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, .4);
+  --shadow-2: 0 2px 4px rgba(0, 0, 0, .3), 0 8px 24px -6px rgba(0, 0, 0, .5);
+  --shadow-3: 0 4px 8px rgba(0, 0, 0, .35), 0 24px 48px -12px rgba(0, 0, 0, .65);
+  --focus: 0 0 0 3px #07161d, 0 0 0 5px #52c6df;
+}

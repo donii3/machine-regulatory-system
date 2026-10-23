@@ -1,0 +1,38 @@
+/* SachetGuard PM – print stylesheet: clean black-on-white A4 for the maintenance schedule. */
+.print-only { display: none; }
+
+@media print {
+  @page { size: A4; margin: 16mm 14mm; }
+  :root, :root[data-theme="dark"] {
+    --bg: #fff; --surface: #fff; --surface-2: #f2f2f2; --surface-3: #e5e5e5; --ink: #000; --ink-2: #222; --ink-3: #444;
+    --line: #999; --line-strong: #666; --primary: #000; --bad: #000; --bad-bg: #fff; --ok: #000; --warn: #000;
+  }
+  html, body { background: #fff !important; color: #000 !important; font-size: 11pt; }
+  .sidebar, .topbar, .tabbar, .toasts, .demo-caption, .sample-banner, .site-footer .screen-only, .no-print,
+  .hero, .btn, .icon-btn, .seg, .skip-link, .sheet-backdrop, .dialog-backdrop { display: none !important; }
+  .app { display: block !important; }
+  .main-col, .page { padding: 0 !important; max-width: none !important; }
+  .print-only { display: block !important; }
+  .print-head { border-bottom: 2px solid #000; margin-bottom: 10mm; padding-bottom: 4mm; }
+  .print-head h1 { font-size: 15pt; margin: 0 0 2mm; }
+  .print-head p { margin: 0; font-size: 10pt; }
+  .card, .table-wrap { box-shadow: none !important; border: 1px solid #666 !important; background: #fff !important; }
+  .table-wrap { overflow: visible !important; }
+  table { min-width: 0 !important; font-size: 9.5pt; }
+  th { background: #e5e5e5 !important; color: #000 !important; }
+  tr { break-inside: avoid; }
+  .tag { background: #fff !important; color: #000 !important; border: 1px solid #000; }
+  .tl-month { break-inside: avoid; border-color: #666; }
+  .sw { border: 1px solid #000; }
+  a { color: #000; text-decoration: none; }
+  .reveal { animation: none !important; }
+  .site-footer { border-top: 1px solid #000; color: #000; background: #fff !important; margin-top: 8mm; padding: 0; font-size: 8.5pt; break-inside: avoid; page-break-inside: avoid; }
+  .footer-inner { padding: 4mm 0 0; display: block; max-width: none; }
+  .footer-brand { margin-bottom: 2mm; }
+  .footer-title { max-width: none; margin-bottom: 2mm; font-size: 8.5pt; }
+  .footer-meta { border-top: 1px solid #666; font-size: 8.5pt; padding-top: 2mm; }
+  .footer-meta li + li::before { color: #000; }
+  /* Backgrounds are not printed by default, so draw the logo as a black outline with a black icon. */
+  .brand-mark { background: #fff !important; box-shadow: none !important; color: #000 !important; border: 1.5pt solid #000; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .brand-mark svg { stroke: #000 !important; }
+}
